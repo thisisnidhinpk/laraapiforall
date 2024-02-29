@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2024 at 02:52 AM
+-- Generation Time: Feb 29, 2024 at 02:59 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -59,7 +59,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2023_11_26_010143_create_tasks_table', 1),
-(6, '2023_11_29_012416_create_studentdatas_table', 2);
+(6, '2023_11_29_012416_create_studentdatas_table', 2),
+(7, '2024_02_27_012134_create_tbl__clink_patient_regs_table', 3),
+(8, '2024_02_28_150434_create_tbl__clink_patient_regs_table', 4),
+(9, '2024_02_29_011142_create_tbl__clink_patient_regs_table', 5);
 
 -- --------------------------------------------------------
 
@@ -117,6 +120,30 @@ INSERT INTO `tasks` (`id`, `title`, `description`, `created_at`, `updated_at`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_clink_patient_regs`
+--
+
+CREATE TABLE `tbl_clink_patient_regs` (
+  `patient_no` int(11) NOT NULL COMMENT 'Primary key starting from 1001',
+  `P_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `P_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `P_place` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `P_dob` date NOT NULL,
+  `P_age` int(11) NOT NULL,
+  `P_gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `P_regdate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_clink_patient_regs`
+--
+
+INSERT INTO `tbl_clink_patient_regs` (`patient_no`, `P_name`, `P_address`, `P_place`, `P_dob`, `P_age`, `P_gender`, `P_regdate`) VALUES
+(1, 'vidhul', 'kannur', 'kannur', '1994-05-30', 20, 'Male', '2024-10-01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -169,6 +196,12 @@ ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_clink_patient_regs`
+--
+ALTER TABLE `tbl_clink_patient_regs`
+  ADD PRIMARY KEY (`patient_no`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -189,7 +222,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -202,6 +235,12 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `tasks`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_clink_patient_regs`
+--
+ALTER TABLE `tbl_clink_patient_regs`
+  MODIFY `patient_no` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key starting from 1001', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
